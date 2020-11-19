@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: #4CAF50;
+            position:
+        }
+        /* Green */
+        .button2 {
+            background-color: #008CBA;
+        }
+        /* Blue */
+
+        body {
+            background-color: black;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.68/Tone.js"></script>
+    <script>
+        Tone.start();
+        var synth;
+        var player;
+        document.addEventListener("DOMContentLoaded", function () {
+            //create a synth and connect it to the main output (your speakers)
+            synth = new Tone.Synth().toDestination();
+            player = new Tone.Player("sadMel.wav").toDestination();
+        });
+
+        function PlayTone() {
+            //play a middle 'C' for the duration of an 8th note
+            synth.triggerAttack("C3");
+        }
+
+        function StopTone() {
+            synth.triggerRelease();
+        }
+
+        function PlayMidi() {
+            Tone.loaded().then(() => {
+                player.start();
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+    <button id="soloPlay" class="button button1" onclick="PlayTone()"> Play </button>
+    <button id="soloStop" class="button button2" onclick="StopTone()"> Stop </button>
+
+    <button id="gtr1Play" class="button button1" onclick="PlayTone()"> Play </button>
+    <button id="gtr1Stop" class="button button2" onclick="StopTone()"> Stop </button>
+
+    <button id="midi" class="button button2" onclick="PlayMidi()"> Play Midi </button>
+
+</body>
+</html>

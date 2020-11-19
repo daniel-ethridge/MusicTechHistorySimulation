@@ -37,7 +37,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             //create a synth and connect it to the main output (your speakers)
             synth = new Tone.Synth().toDestination();
-            player = new Tone.Player("sadMel.wav").toDestination();
+            player = new Tone.Player("https://github.com/daniel-ethridge/MusicTechHistorySimulation/sadMel.wav").toDestination();
         });
 
         function PlayTone() {

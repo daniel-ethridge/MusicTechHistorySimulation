@@ -20,7 +20,7 @@
 
         .button1 {
             background-color: #4CAF50;
-            position:
+            position: fixed;
         }
         /* Green */
         .button2 {
@@ -41,11 +41,6 @@
         document.addEventListener("DOMContentLoaded", function () {
             //create a synth and connect it to the main output (your speakers)
             synth = new Tone.Synth().toDestination();
-<<<<<<< HEAD:FinalProject.html
-            
-=======
-            player = new Tone.Player("https://github.com/daniel-ethridge/MusicTechHistorySimulation/sadMel.wav").toDestination();
->>>>>>> 4943003a0b0948a5d372378ce9c7a89c632be078:index.html
         });
 
         function PlayTone() {
@@ -56,7 +51,7 @@
         function StopTone() {
             synth.triggerRelease();
         }
-        }
+        
 
     </script>
 
@@ -85,37 +80,43 @@
         <tone-play-toggle disabled>Loading...</tone-play-toggle>
     </tone-content>
 
+    <button id="gtr1Stop" class="button button2" onclick="PlayMidi()"> Stop </button>
+
     <script type="text/javascript">
+        document.querySelector('tone-play-toggle').removeAttribute('disabled')
+        document.querySelector('#Status').textContent = ''
 
-        Midi.fromUrl("./Bass321.mid").then(midi => {
+        function PlayMidi() {
 
-            document.querySelector('tone-play-toggle').removeAttribute('disabled')
-            document.querySelector('#Status').textContent = ''
+            Midi.fromUrl("./Bass321.mid").then(midi => {
 
-            //synth playback
-            const synths = []
-            document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-                const playing = e.detail
-                if (playing) {
-                    const now = Tone.now() + 0.5
-                    midi.tracks.forEach(track => {
-                        //create a synth for each track
-                        const synth = new Tone.PolySynth(Tone.Synth).toDestination()
-                        synths.push(synth)
-                        //schedule all of the events
-                        track.notes.forEach(note => {
-                            synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+                
+
+                //synth playback
+                const synths = []
+                document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
+                    const playing = e.detail
+                    if (playing) {
+                        const now = Tone.now() + 0.5
+                        midi.tracks.forEach(track => {
+                            //create a synth for each track
+                            const synth = new Tone.PolySynth(Tone.Synth).toDestination()
+                            synths.push(synth)
+                            //schedule all of the events
+                            track.notes.forEach(note => {
+                                synth.triggerAttackRelease(note.name, note.duration * 1.5, (note.time + now) * 2, note.velocity)
+                            })
                         })
-                    })
-                } else {
-                    //dispose the synth and make a new one
-                    while (synths.length) {
-                        const synth = synths.shift()
-                        synth.dispose()
+                    } else {
+                        //dispose the synth and make a new one
+                        while (synths.length) {
+                            const synth = synths.shift()
+                            synth.dispose()
+                        }
                     }
-                }
+                })
             })
-        })
+        }
 
     </script>
 

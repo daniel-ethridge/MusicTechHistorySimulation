@@ -4,7 +4,7 @@
     <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
     <script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
     <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
-
+    
     <style>
         .button {
             border: none;
@@ -71,53 +71,135 @@
             height: 40px;
         }
     </style>
-
-    <tone-top-bar></tone-top-bar>
-
+    <script type="text/javascript" src="https://www.guitarland.com/javascripts/Tone.js"></script>
+    <script type="text/javascript" src="https://www.guitarland.com/javascripts/StartAudioContext.js"></script>
+    <script src="https://www.guitarland.com/javascripts/Rhythm.js"></script>
+    <script src="https://www.guitarland.com/javascripts/instruments.js"></script>
+    <!--
     <tone-content>
+
         <div id="Description">Load and play Bach's <i>Prelude in C</i></div>
         <div id="Status">Loading...</div>
         <tone-play-toggle disabled>Loading...</tone-play-toggle>
     </tone-content>
 
     <button id="gtr1Stop" class="button button2" onclick="PlayMidi()"> Stop </button>
+-->
+    <input type="button" class="playButton" VALUE="Play Guitar Parts" id="btn1">
+    <input type="button" class="stopButton" VALUE="Stop" onclick="stopIt()">
 
     <script type="text/javascript">
-        document.querySelector('tone-play-toggle').removeAttribute('disabled')
-        document.querySelector('#Status').textContent = ''
+    var bassVolumeSaved;
+    
+    var piano1 = instruments.piano();
+    var piano2 = instruments.piano();
+    var piano3 = instruments.piano();
 
-        function PlayMidi() {
+    function stopIt(){
+        Tone.Transport.stop();
+        Tone.Transport.cancel(0);
+    }
 
-            Midi.fromUrl("./Bass321.mid").then(midi => {
+    function updateTempo()  {
+	    var tempo = document.myForm.tempo.value;
+	    Tone.Transport.bpm.value = tempo   
+    }
 
-                
+    function PlayGuitars() {
+		GuitarMel1_Notes = ["D5","G4","G4","B4","F#4", "B3", "B3","E4","A4","F#4","F#4"];
+		GuitarMel1_Durations = ["8n","8n","8n","4n","8n","8n","8n","8n","8n","8n","8n"];
+		GuitarMel1_Velocity = [0.9,0.9,0,0.7,0.7,0.9,0,0.9,0.7,0.9,0];
 
-                //synth playback
-                const synths = []
-                document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-                    const playing = e.detail
-                    if (playing) {
-                        const now = Tone.now() + 0.5
-                        midi.tracks.forEach(track => {
-                            //create a synth for each track
-                            const synth = new Tone.PolySynth(Tone.Synth).toDestination()
-                            synths.push(synth)
-                            //schedule all of the events
-                            track.notes.forEach(note => {
-                                synth.triggerAttackRelease(note.name, note.duration * 1.5, (note.time + now) * 2, note.velocity)
-                            })
-                        })
-                    } else {
-                        //dispose the synth and make a new one
-                        while (synths.length) {
-                            const synth = synths.shift()
-                            synth.dispose()
-                        }
-                    }
-                })
-            })
-        }
+        GuitarMel2_Notes = ["F#4","F#4","D5","G4","G4","B4","F#4", "B3", "B3","E4","A4"];
+		GuitarMel2_Durations = ["8n","8n","8n","8n","8n","4n","8n","8n","8n","8n","8n"];
+		GuitarMel2_Velocity = [0.9,0,0.9,0.9,0,0.7,0.7,0.9,0,0.9,0.7];
 
+        GuitarMel3_Notes = ["B4","F#4","B3","B3","E4","A4","F#4","F#4","D5","G4","G4"];
+		GuitarMel3_Durations = ["4n","8n","8n","8n","8n","8n","8n","8n","8n","8n","8n"];
+		GuitarMel3_Velocity = [0.9,0.7,0.9,0,0.9,0.7,0.9,0,0.7,0.7,0];
+                    
+        var GuitarMel1 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel1_Durations, GuitarMel1_Notes, GuitarMel1_Velocity);
+        var GuitarMel2 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel2_Durations, GuitarMel2_Notes, GuitarMel2_Velocity);
+        var GuitarMel3 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel3_Durations, GuitarMel3_Notes, GuitarMel3_Velocity);
+//        console.log(HeyHoMelody);
+        
+		var GuitarPart1 = new Tone.Part(function(time, value){
+            piano1.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel1 ).start(0);
+
+		var GuitarPart2 = new Tone.Part(function(time, value){
+            piano2.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel2 ).start("6*1m");
+        piano2.volume.value = -5;
+        
+        var GuitarPart3 = new Tone.Part(function(time, value){
+            piano3.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel3 ).start("12*1m");
+        piano3.volume.value = -5;
+        
+
+		//TRANSPORT
+		GuitarPart1.loopStart = "0";
+		GuitarPart1.loopEnd = "2:0";
+		GuitarPart1.loop = 20;
+
+        // still play 6 bars (but start 2 bars late)
+		GuitarPart2.loopStart = "0";
+		GuitarPart2.loopEnd = "2:0";
+		GuitarPart2.loop = 16;
+        
+        GuitarPart3.loopStart = "0";
+		GuitarPart3.loopEnd = "2:0";
+		GuitarPart3.loop = 12;
+        
+        Tone.Transport.swing = 0;
+        Tone.Transport.bpm.value = 192;   
+        Tone.Transport.start();
+    }
+    var mybutton1 = document.getElementById("btn1");
+    mybutton1.onclick = PlayGuitars;
+    
+    /*
+        Midi.fromUrl("./guitar1.mid").then(midi => {
+			document.querySelector('tone-play-toggle').removeAttribute('disabled')
+			document.querySelector('#Status').textContent = ''
+
+			//synth playback
+			const synths = []
+			document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
+				const playing = e.detail
+				if (playing) {
+					const now = Tone.now() 
+					midi.tracks.forEach(track => {
+						//create a synth for each track
+						guitar1 = new Tone.FMSynth({envelope: {
+								attack: 0.01,
+								decay: 0.1,
+								sustain: 0.3,
+								release: 1
+                            }
+						}).toMaster();
+						synths.push(guitar1)
+						//schedule all of the events
+						//repeated event every 8th note
+                       
+                        Tone.Transport.scheduleRepeat(track.notes.forEach(note => {
+							guitar1.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+
+                        // transport must be started before it starts invoking events
+                        Tone.Transport.bpm.value = 192;   
+                        Tone.Transport.start("+0.1");
+					})
+				} else {
+					//dispose the synth and make a new one
+					while (synths.length) {
+						const guitar1 = synths.shift()
+						guitar1.dispose()
+					}
+				}
+			})
+		})
+    */
     </script>
 
 

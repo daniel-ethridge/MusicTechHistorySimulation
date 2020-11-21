@@ -4,6 +4,7 @@
     <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
     <script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
     <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
     <style>
         .button {
@@ -29,8 +30,25 @@
         /* Blue */
 
         body {
-            background-color: black;
+            background-color: rgb(252, 219, 72, 0.3);
         }
+        /*
+        .Guitar1.active {
+            background-color: #bf9471;
+            color: white;
+        }
+
+        .Guitar1 {
+        width: 250px;
+        height: 50px;
+        color: #8c8c8c;
+        font-weight: 700;
+        background-color: #f4efeb;
+        border: none;
+        letter-spacing: 2px;
+        outline: none;
+        }
+        */
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.68/Tone.js"></script>
@@ -57,20 +75,14 @@
 
 </head>
 <body>
+    <!--
     <button id="soloPlay" class="button button1" onclick="PlayTone()"> Play </button>
     <button id="soloStop" class="button button2" onclick="StopTone()"> Stop </button>
 
     <button id="gtr1Play" class="button button1" onclick="PlayTone()"> Play </button>
     <button id="gtr1Stop" class="button button2" onclick="StopTone()"> Stop </button>
+        -->
 
-
-
-    <style>
-        #Status {
-            color: gray;
-            height: 40px;
-        }
-    </style>
     <script type="text/javascript" src="https://www.guitarland.com/javascripts/Tone.js"></script>
     <script type="text/javascript" src="https://www.guitarland.com/javascripts/StartAudioContext.js"></script>
     <script src="https://www.guitarland.com/javascripts/Rhythm.js"></script>
@@ -85,19 +97,60 @@
 
     <button id="gtr1Stop" class="button button2" onclick="PlayMidi()"> Stop </button>
 -->
-    <input type="button" class="playButton" VALUE="Play Guitar Parts" id="btn1">
-    <input type="button" class="stopButton" VALUE="Stop" onclick="stopIt()">
+    <br/>
+    <input type="button" class="playAllButton" VALUE="START!!" id="btn1">
+    <input type="button" class="stopAllButton" VALUE="Stop All" onclick="stopIt()"><br/>
+    <input type="button" class="Guitar1" VALUE="Play Guitar 1" id="startGui1" onclick="StartGuitar1()">
+    <input type="button" class="Guitar1" VALUE="Stop Guitar 1" onclick="MuteGuitar1()"><br/>
+    <input type="button" class="Guitar2" VALUE="Play Guitar 2" id="startGui2" onclick="StartGuitar2()">
+    <input type="button" class="Guitar2" VALUE="Stop Guitar 2" onclick="MuteGuitar2()"><br/>
+    <input type="button" class="Guitar3" VALUE="Play Guitar 3" id="startGui3" onclick="StartGuitar3()">
+    <input type="button" class="Guitar3" VALUE="Stop Guitar 3" onclick="MuteGuitar3()"><br/>
+    <input type="button" class="Guitar4" VALUE="Play Guitar 4" id="startGui4" onclick="StartGuitar4()">
+    <input type="button" class="Guitar4" VALUE="Stop Guitar 4" onclick="MuteGuitar4()"><br/> 
+   
 
     <script type="text/javascript">
     var bassVolumeSaved;
     
-    var piano1 = instruments.piano();
-    var piano2 = instruments.piano();
-    var piano3 = instruments.piano();
+    var guitar1 = instruments.kalimba();
+    var guitar2 = instruments.kalimba();
+    var guitar3 = instruments.kalimba();
+    var guitar4 = instruments.kalimba();
 
     function stopIt(){
         Tone.Transport.stop();
         Tone.Transport.cancel(0);
+    }
+
+    function StartGuitar1(){
+        guitar1.volume.value = -5;
+    }
+    function MuteGuitar1(){
+        guitar1.volume.value = -Infinity;
+    }
+
+    function StartGuitar2(){
+        guitar2.volume.value = -5;
+    }
+    function MuteGuitar2(){
+        guitar2.volume.value = -Infinity;
+    }
+
+
+    function StartGuitar3(){
+        guitar3.volume.value = -5;
+    }
+    function MuteGuitar3(){
+        guitar3.volume.value = -Infinity;
+    }
+
+
+    function StartGuitar4(){
+        guitar4.volume.value = -5;
+    }
+    function MuteGuitar4(){
+        guitar4.volume.value = -Infinity;
     }
 
     function updateTempo()  {
@@ -110,55 +163,76 @@
 		GuitarMel1_Durations = ["8n","8n","8n","4n","8n","8n","8n","8n","8n","8n","8n"];
 		GuitarMel1_Velocity = [0.9,0.9,0,0.7,0.7,0.9,0,0.9,0.7,0.9,0];
 
-        GuitarMel2_Notes = ["F#4","F#4","D5","G4","G4","B4","F#4", "B3", "B3","E4","A4"];
-		GuitarMel2_Durations = ["8n","8n","8n","8n","8n","4n","8n","8n","8n","8n","8n"];
-		GuitarMel2_Velocity = [0.9,0,0.9,0.9,0,0.7,0.7,0.9,0,0.9,0.7];
+        GuitarMel2_Notes = GuitarMel1_Notes.slice(-2,GuitarMel1_Notes.length).concat(GuitarMel1_Notes.slice(0,-2)) //["F#4","F#4","D5","G4","G4","B4","F#4", "B3", "B3","E4","A4"];
+		GuitarMel2_Durations = GuitarMel1_Durations.slice(-2,GuitarMel1_Durations.length).concat(GuitarMel1_Durations.slice(0,-2))//["8n","8n","8n","8n","8n","4n","8n","8n","8n","8n","8n"];
+		GuitarMel2_Velocity = GuitarMel1_Velocity.slice(-2,GuitarMel1_Velocity.length).concat(GuitarMel1_Velocity.slice(0,-2))//[0.9,0,0.9,0.9,0,0.7,0.7,0.9,0,0.9,0.7];
 
-        GuitarMel3_Notes = ["B4","F#4","B3","B3","E4","A4","F#4","F#4","D5","G4","G4"];
-		GuitarMel3_Durations = ["4n","8n","8n","8n","8n","8n","8n","8n","8n","8n","8n"];
-		GuitarMel3_Velocity = [0.9,0.7,0.9,0,0.9,0.7,0.9,0,0.7,0.7,0];
+
+        GuitarMel3_Notes = GuitarMel1_Notes.slice(3,GuitarMel1_Notes.length).concat(GuitarMel1_Notes.slice(0,3)) //["B4","F#4","B3","B3","E4","A4","F#4","F#4","D5","G4","G4"];
+		GuitarMel3_Durations = GuitarMel1_Durations.slice(3,GuitarMel1_Durations.length).concat(GuitarMel1_Durations.slice(0,3)) //["4n","8n","8n","8n","8n","8n","8n","8n","8n","8n","8n"];
+		GuitarMel3_Velocity =  GuitarMel1_Velocity.slice(3,GuitarMel1_Velocity.length).concat(GuitarMel1_Velocity.slice(0,3)) //[0.9,0.7,0.9,0,0.9,0.7,0.9,0,0.7,0.7,0];
+
+        GuitarMel4_Notes = GuitarMel1_Notes.slice(6,GuitarMel1_Notes.length).concat(GuitarMel1_Notes.slice(0,6)) 
+		GuitarMel4_Durations = GuitarMel1_Durations.slice(6,GuitarMel1_Durations.length).concat(GuitarMel1_Durations.slice(0,6))
+		GuitarMel4_Velocity =  GuitarMel1_Velocity.slice(6,GuitarMel1_Velocity.length).concat(GuitarMel1_Velocity.slice(0,6)) 
                     
         var GuitarMel1 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel1_Durations, GuitarMel1_Notes, GuitarMel1_Velocity);
         var GuitarMel2 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel2_Durations, GuitarMel2_Notes, GuitarMel2_Velocity);
         var GuitarMel3 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel3_Durations, GuitarMel3_Notes, GuitarMel3_Velocity);
-//        console.log(HeyHoMelody);
+        var GuitarMel4 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel4_Durations, GuitarMel4_Notes, GuitarMel4_Velocity);
         
 		var GuitarPart1 = new Tone.Part(function(time, value){
-            piano1.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+            guitar1.triggerAttackRelease(value.note, value.duration, time, value.velocity)
 		}, GuitarMel1 ).start(0);
+        guitar1.volume.value = -5;
 
 		var GuitarPart2 = new Tone.Part(function(time, value){
-            piano2.triggerAttackRelease(value.note, value.duration, time, value.velocity)
-		}, GuitarMel2 ).start("6*1m");
-        piano2.volume.value = -5;
+            guitar2.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel2 ).start(0)//.start("6*1m");
+        guitar2.volume.value = -Infinity;
         
         var GuitarPart3 = new Tone.Part(function(time, value){
-            piano3.triggerAttackRelease(value.note, value.duration, time, value.velocity)
-		}, GuitarMel3 ).start("12*1m");
-        piano3.volume.value = -5;
+            guitar3.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel3 ).start(0);//.start("12*1m");
+        guitar3.volume.value = -Infinity;
+
+        var GuitarPart4 = new Tone.Part(function(time, value){
+            guitar4.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, GuitarMel4 ).start(0)//.start("18*1m");
+        guitar4.volume.value = -Infinity;
         
 
 		//TRANSPORT
 		GuitarPart1.loopStart = "0";
 		GuitarPart1.loopEnd = "2:0";
-		GuitarPart1.loop = 20;
+		GuitarPart1.loop = 200;
 
         // still play 6 bars (but start 2 bars late)
 		GuitarPart2.loopStart = "0";
 		GuitarPart2.loopEnd = "2:0";
-		GuitarPart2.loop = 16;
+		GuitarPart2.loop = 200;
         
         GuitarPart3.loopStart = "0";
 		GuitarPart3.loopEnd = "2:0";
-		GuitarPart3.loop = 12;
+		GuitarPart3.loop = 200;
+
+        GuitarPart4.loopStart = "0";
+		GuitarPart4.loopEnd = "2:0";
+		GuitarPart4.loop = 200;
         
         Tone.Transport.swing = 0;
         Tone.Transport.bpm.value = 192;   
         Tone.Transport.start();
+        //$('#Guitar1').addClass("active")
     }
     var mybutton1 = document.getElementById("btn1");
     mybutton1.onclick = PlayGuitars;
-    
+/*
+    $("button").click(function() {
+        $("button").removeClass("active");
+        $(this).addClass("active");
+    });
+  */  
     /*
         Midi.fromUrl("./guitar1.mid").then(midi => {
 			document.querySelector('tone-play-toggle').removeAttribute('disabled')

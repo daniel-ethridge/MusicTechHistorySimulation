@@ -108,6 +108,10 @@
     <input type="button" class="Guitar3" VALUE="Stop Guitar 3" onclick="MuteGuitar3()"><br/>
     <input type="button" class="Guitar4" VALUE="Play Guitar 4" id="startGui4" onclick="StartGuitar4()">
     <input type="button" class="Guitar4" VALUE="Stop Guitar 4" onclick="MuteGuitar4()"><br/> 
+    <input type="button" class="Bass1" VALUE="Play Bass 1" id="startBass1" onclick="StartBass1()">
+    <input type="button" class="Bass1" VALUE="Stop Bass 1" onclick="MuteBass1()"><br/> 
+    <input type="button" class="Bass2" VALUE="Play Bass 2" id="startBass2" onclick="StartBass2()">
+    <input type="button" class="Bass2" VALUE="Stop Bass 2" onclick="MuteBass2()"><br/> 
    
 
     <script type="text/javascript">
@@ -117,6 +121,9 @@
     var guitar2 = instruments.kalimba();
     var guitar3 = instruments.kalimba();
     var guitar4 = instruments.kalimba();
+    var bass1 = instruments.bass();
+    var bass2 = instruments.bass();
+    const chord1 = new Tone.PolySynth().toDestination()
 
     function stopIt(){
         Tone.Transport.stop();
@@ -153,6 +160,22 @@
         guitar4.volume.value = -Infinity;
     }
 
+    function StartBass1(){
+        bass1.volume.value = -18;
+    }
+    function MuteBass1(){
+        bass1.volume.value = -Infinity;
+    }
+
+    function StartBass2(){
+        bass2.volume.value = -20;
+    }
+    function MuteBass2(){
+        bass2.volume.value = -Infinity;
+    }
+
+
+
     function updateTempo()  {
 	    var tempo = document.myForm.tempo.value;
 	    Tone.Transport.bpm.value = tempo   
@@ -175,11 +198,21 @@
         GuitarMel4_Notes = GuitarMel1_Notes.slice(6,GuitarMel1_Notes.length).concat(GuitarMel1_Notes.slice(0,6)) 
 		GuitarMel4_Durations = GuitarMel1_Durations.slice(6,GuitarMel1_Durations.length).concat(GuitarMel1_Durations.slice(0,6))
 		GuitarMel4_Velocity =  GuitarMel1_Velocity.slice(6,GuitarMel1_Velocity.length).concat(GuitarMel1_Velocity.slice(0,6)) 
+
+        BassMel1_Notes = ["A2","A2","A3","A3","A2","A3","A3",'C3','C3','C3','C3','C3','C3','C3'];
+		BassMel1_Durations = ["8n","8n","8n","8n","8n","8n",'4n','8n','8n','4n','4n','4n','4n','4n'];
+		BassMel1_Velocity = [0.9,0,0.9,0,0.9,0.9,0,0.9,0,0,0,0,0,0];
+
+        BassMel2_Notes = ["A2","A2","A3","A3","A2","A3","A3",'A3','C3','C4','C4' ,'C3','C3','C3','C3'];
+		BassMel2_Durations = ["8n","8n","8n","8n","8n","8n",'8n','8n','8n','8n','4n' ,'4n','4n','4n','4n'];
+		BassMel2_Velocity = [0.9,0,0,0.9,0.9,0,0.9, 0,0.9,0.9,0 ,0,0,0,0];
                     
         var GuitarMel1 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel1_Durations, GuitarMel1_Notes, GuitarMel1_Velocity);
         var GuitarMel2 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel2_Durations, GuitarMel2_Notes, GuitarMel2_Velocity);
         var GuitarMel3 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel3_Durations, GuitarMel3_Notes, GuitarMel3_Velocity);
         var GuitarMel4 = Rhythm.mergeDurationVelocityAndPitch(GuitarMel4_Durations, GuitarMel4_Notes, GuitarMel4_Velocity);
+        var BassMel1 = Rhythm.mergeDurationVelocityAndPitch(BassMel1_Durations, BassMel1_Notes, BassMel1_Velocity);
+        var BassMel2 = Rhythm.mergeDurationVelocityAndPitch(BassMel2_Durations, BassMel2_Notes, BassMel2_Velocity);
         
 		var GuitarPart1 = new Tone.Part(function(time, value){
             guitar1.triggerAttackRelease(value.note, value.duration, time, value.velocity)
@@ -200,6 +233,16 @@
             guitar4.triggerAttackRelease(value.note, value.duration, time, value.velocity)
 		}, GuitarMel4 ).start(0)//.start("18*1m");
         guitar4.volume.value = -Infinity;
+
+        var BassPart1 = new Tone.Part(function(time, value){
+            bass1.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, BassMel1 ).start(0)//.start("18*1m");
+        bass1.volume.value = -Infinity;
+
+        var BassPart2 = new Tone.Part(function(time, value){
+            bass2.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+		}, BassMel2 ).start(0)//.start("18*1m");
+        bass2.volume.value = -Infinity;
         
 
 		//TRANSPORT
@@ -219,6 +262,14 @@
         GuitarPart4.loopStart = "0";
 		GuitarPart4.loopEnd = "2:0";
 		GuitarPart4.loop = 200;
+
+        BassPart1.loopStart = "0";
+		BassPart1.loopEnd = "4:0";
+		BassPart1.loop = 200;
+
+        BassPart2.loopStart = "0";
+		BassPart2.loopEnd = "4:0";
+		BassPart2.loop = 200;
         
         Tone.Transport.swing = 0;
         Tone.Transport.bpm.value = 192;   

@@ -89,7 +89,7 @@ body {
 #btn1{
     position: relative;
     left: 28%;
-    top: 100px;
+    top: calc(100vh - 870px);
     width: 250px;
     height: 50px;
     color: #f4f4f2;
@@ -128,7 +128,7 @@ body {
 #startGui1{
 position: relative;
 left: 28%;
-top: 150px;
+top: calc(100vh - 820px);
 width: 250px;
 height: 50px;
 color: #292828;
@@ -162,7 +162,7 @@ border-radius: 25px
 #startGui2{
     position: relative;
     left: 28%;
-    top: 200px;
+    top: calc(100vh - 770px);
     width: 250px;
     height: 50px;
     color: #292828;
@@ -196,7 +196,7 @@ border-radius: 25px
 #startGui3{
     position: relative;
     left: 28%;
-    top: 250px;
+    top: calc(100vh - 720px);
     width: 250px;
     height: 50px;
     color: #292828;
@@ -229,7 +229,7 @@ border-radius: 25px
 #startGui4{
     position: relative;
     left: 28%;
-    top: 300px;
+    top: calc(100vh - 670px);
     width: 250px;
     height: 50px;
     color: #292828;
@@ -264,7 +264,7 @@ border-radius: 25px
 #startBass1{
     position: relative;
     left: 28%;
-    top: 350px;
+    top: calc(100vh - 620px);
     width: 250px;
     height: 50px;
     color: #292828;
@@ -297,7 +297,7 @@ border-radius: 25px
 #startBass2{
     position: relative;
     left: 28%;
-    top: 400px;
+    top: calc(100vh - 570px);
     width: 250px;
     height: 50px;
     color: #292828;

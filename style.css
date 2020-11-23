@@ -1,0 +1,329 @@
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-webkit-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  /* Main styles */
+  body {
+
+    /* img size is 50x50 */
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+    -webkit-animation: bg-scrolling-reverse .92s infinite;
+    /* Safari 4+ */
+    -moz-animation: bg-scrolling-reverse .92s infinite;
+    /* Fx 5+ */
+    -o-animation: bg-scrolling-reverse .92s infinite;
+    /* Opera 12+ */
+    animation: bg-scrolling-reverse .92s infinite;
+    /* IE 10+ */
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+
+  
+
+/*
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+*/
+.button1 {
+    background-color: #4CAF50;
+    position: fixed;
+}
+/* Green */
+.button2 {
+    background-color: #008CBA;
+}
+/* Blue 
+
+body {
+    background-color: rgb(252, 219, 72, 0.3);
+}*/
+
+#btn1{
+    position: relative;
+    left: 28%;
+    top: 100px;
+    width: 250px;
+    height: 50px;
+    color: #f4f4f2;
+    background-color: #394867;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#btn2{
+    position: relative;
+    left: 40%;
+    top: 100px;
+    width: 250px;
+    height: 50px;
+    color: #f4f4f2;
+    background-color: #394867;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+/*
+#startGui1.active {
+    background-color: #bf9471;
+    color: white;
+}
+*/
+#startGui1{
+position: relative;
+left: 28%;
+top: 150px;
+width: 250px;
+height: 50px;
+color: #292828;
+background-color: #bbbfca;
+border: none;
+letter-spacing: 2px;
+outline: none;
+font-family: 'Press Start 2P', cursive;
+font-size: 12px;
+cursor:pointer;
+border-radius: 25px
+}
+
+#stopGui1{
+    position: relative;
+    left: 40%;
+    top: 150px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+
+#startGui2{
+    position: relative;
+    left: 28%;
+    top: 200px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#stopGui2{
+    position: relative;
+    left: 40%;
+    top: 200px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+
+#startGui3{
+    position: relative;
+    left: 28%;
+    top: 250px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#stopGui3{
+    position: relative;
+    left: 40%;
+    top: 250px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+#startGui4{
+    position: relative;
+    left: 28%;
+    top: 300px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#stopGui4{
+    position: relative;
+    left: 40%;
+    top: 300px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+
+
+#startBass1{
+    position: relative;
+    left: 28%;
+    top: 350px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#stopBass1{
+    position: relative;
+    left: 40%;
+    top: 350px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+#startBass2{
+    position: relative;
+    left: 28%;
+    top: 400px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }
+    
+#stopBass2{
+    position: relative;
+    left: 40%;
+    top: 400px;
+    width: 250px;
+    height: 50px;
+    color: #292828;
+    background-color: #bbbfca;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor:pointer;
+    border-radius: 25px
+    }

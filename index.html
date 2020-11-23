@@ -5,50 +5,13 @@
     <script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
     <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link href="./style.css" rel="stylesheet"> 
     
     <style>
-        .button {
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        .button1 {
-            background-color: #4CAF50;
-            position: fixed;
-        }
-        /* Green */
-        .button2 {
-            background-color: #008CBA;
-        }
-        /* Blue */
-
-        body {
-            background-color: rgb(252, 219, 72, 0.3);
-        }
-        /*
-        .Guitar1.active {
-            background-color: #bf9471;
-            color: white;
-        }
-
-        .Guitar1 {
-        width: 250px;
-        height: 50px;
-        color: #8c8c8c;
-        font-weight: 700;
-        background-color: #f4efeb;
-        border: none;
-        letter-spacing: 2px;
-        outline: none;
-        }
-        */
+        
+        
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.68/Tone.js"></script>
@@ -97,21 +60,22 @@
 
     <button id="gtr1Stop" class="button button2" onclick="PlayMidi()"> Stop </button>
 -->
+
     <br/>
     <input type="button" class="playAllButton" VALUE="START!!" id="btn1">
-    <input type="button" class="stopAllButton" VALUE="Stop All" onclick="stopIt()"><br/>
+    <input type="button" class="stopAllButton" VALUE="Stop All" id="btn2" onclick="stopIt()"><br/>
     <input type="button" class="Guitar1" VALUE="Play Guitar 1" id="startGui1" onclick="StartGuitar1()">
-    <input type="button" class="Guitar1" VALUE="Stop Guitar 1" onclick="MuteGuitar1()"><br/>
+    <input type="button" class="Guitar1" VALUE="Stop Guitar 1" id="stopGui1" onclick="MuteGuitar1()"><br/>
     <input type="button" class="Guitar2" VALUE="Play Guitar 2" id="startGui2" onclick="StartGuitar2()">
-    <input type="button" class="Guitar2" VALUE="Stop Guitar 2" onclick="MuteGuitar2()"><br/>
+    <input type="button" class="Guitar2" VALUE="Stop Guitar 2" id="stopGui2" onclick="MuteGuitar2()"><br/>
     <input type="button" class="Guitar3" VALUE="Play Guitar 3" id="startGui3" onclick="StartGuitar3()">
-    <input type="button" class="Guitar3" VALUE="Stop Guitar 3" onclick="MuteGuitar3()"><br/>
+    <input type="button" class="Guitar3" VALUE="Stop Guitar 3" id="stopGui3" onclick="MuteGuitar3()"><br/>
     <input type="button" class="Guitar4" VALUE="Play Guitar 4" id="startGui4" onclick="StartGuitar4()">
-    <input type="button" class="Guitar4" VALUE="Stop Guitar 4" onclick="MuteGuitar4()"><br/> 
+    <input type="button" class="Guitar4" VALUE="Stop Guitar 4" id="stopGui4" onclick="MuteGuitar4()"><br/> 
     <input type="button" class="Bass1" VALUE="Play Bass 1" id="startBass1" onclick="StartBass1()">
-    <input type="button" class="Bass1" VALUE="Stop Bass 1" onclick="MuteBass1()"><br/> 
+    <input type="button" class="Bass1" VALUE="Stop Bass 1" id="stopBass1" onclick="MuteBass1()"><br/> 
     <input type="button" class="Bass2" VALUE="Play Bass 2" id="startBass2" onclick="StartBass2()">
-    <input type="button" class="Bass2" VALUE="Stop Bass 2" onclick="MuteBass2()"><br/> 
+    <input type="button" class="Bass2" VALUE="Stop Bass 2" id="stopBass2" onclick="MuteBass2()"><br/> 
    
 
     <script type="text/javascript">

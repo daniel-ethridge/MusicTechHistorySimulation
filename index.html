@@ -80,8 +80,8 @@
   <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track2">
     <defs>
       <linearGradient id="Gradient">
-        <stop id="stop1" offset="0" stop-color="white" stop-opacity="0" />
-        <stop id="stop2" offset="0.3" stop-color="white" stop-opacity="1" />
+        <stop id="stop3" offset="0" stop-color="white" stop-opacity="0" />
+        <stop id="stop4" offset="0.3" stop-color="white" stop-opacity="1" />
       </linearGradient>
       <mask id="Mask">
         <rect x="0" y="0" width="100%" height="100" fill="url(#Gradient)"  />
@@ -95,8 +95,8 @@
   <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track3">
     <defs>
       <linearGradient id="Gradient">
-        <stop id="stop1" offset="0" stop-color="white" stop-opacity="0" />
-        <stop id="stop2" offset="0.3" stop-color="white" stop-opacity="1" />
+        <stop id="stop5" offset="0" stop-color="white" stop-opacity="0" />
+        <stop id="stop6" offset="0.3" stop-color="white" stop-opacity="1" />
       </linearGradient>
       <mask id="Mask">
         <rect x="0" y="0" width="100%" height="100" fill="url(#Gradient)"  />
@@ -110,8 +110,8 @@
   <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track4">
     <defs>
       <linearGradient id="Gradient">
-        <stop id="stop1" offset="0" stop-color="white" stop-opacity="0" />
-        <stop id="stop2" offset="0.3" stop-color="white" stop-opacity="1" />
+        <stop id="stop7" offset="0" stop-color="white" stop-opacity="0" />
+        <stop id="stop8" offset="0.3" stop-color="white" stop-opacity="1" />
       </linearGradient>
       <mask id="Mask">
         <rect x="0" y="0" width="100%" height="100" fill="url(#Gradient)"  />
@@ -125,8 +125,8 @@
   <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track5">
     <defs>
       <linearGradient id="Gradient">
-        <stop id="stop1" offset="0" stop-color="white" stop-opacity="0" />
-        <stop id="stop2" offset="0.3" stop-color="white" stop-opacity="1" />
+        <stop id="stop9" offset="0" stop-color="white" stop-opacity="0" />
+        <stop id="stop10" offset="0.3" stop-color="white" stop-opacity="1" />
       </linearGradient>
       <mask id="Mask">
         <rect x="0" y="0" width="100%" height="100" fill="url(#Gradient)"  />
@@ -140,8 +140,8 @@
   <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track6">
     <defs>
       <linearGradient id="Gradient">
-        <stop id="stop1" offset="0" stop-color="white" stop-opacity="0" />
-        <stop id="stop2" offset="0.3" stop-color="white" stop-opacity="1" />
+        <stop id="stop11" offset="0" stop-color="white" stop-opacity="0" />
+        <stop id="stop12" offset="0.3" stop-color="white" stop-opacity="1" />
       </linearGradient>
       <mask id="Mask">
         <rect x="0" y="0" width="100%" height="100" fill="url(#Gradient)"  />
@@ -327,28 +327,28 @@
 
 		//TRANSPORT
 		GuitarPart1.loopStart = "0";
-		GuitarPart1.loopEnd = "2:0";
+		GuitarPart1.loopEnd = "1.5:0";
 		GuitarPart1.loop = 200;
 
         // still play 6 bars (but start 2 bars late)
 		GuitarPart2.loopStart = "0";
-		GuitarPart2.loopEnd = "2:0";
+		GuitarPart2.loopEnd = "1.5:0";
 		GuitarPart2.loop = 200;
         
         GuitarPart3.loopStart = "0";
-		GuitarPart3.loopEnd = "2:0";
+		GuitarPart3.loopEnd = "1.5:0";
 		GuitarPart3.loop = 200;
 
         GuitarPart4.loopStart = "0";
-		GuitarPart4.loopEnd = "2:0";
+		GuitarPart4.loopEnd = "1.5:0";
 		GuitarPart4.loop = 200;
 
         BassPart1.loopStart = "0";
-		BassPart1.loopEnd = "4:0";
+		BassPart1.loopEnd = "3:0";
 		BassPart1.loop = 200;
 
         BassPart2.loopStart = "0";
-		BassPart2.loopEnd = "4:0";
+		BassPart2.loopEnd = "3:0";
 		BassPart2.loop = 200;
         
         Tone.Transport.swing = 0;
@@ -369,59 +369,89 @@
         yoyo: true,
         ease:Linear.easeNone});
 
-        TweenMax.fromTo("#stop2", 1.5, {
+    TweenMax.fromTo("#stop2", 1.5, {
         attr:{offset:0}
         }, {
         attr:{offset:2},
         repeat: -1,
         yoyo: true,
         ease:Linear.easeNone});
-/*
-    $("button").click(function() {
-        $("button").removeClass("active");
-        $(this).addClass("active");
-    });
-  */  
     /*
-        Midi.fromUrl("./guitar1.mid").then(midi => {
-			document.querySelector('tone-play-toggle').removeAttribute('disabled')
-			document.querySelector('#Status').textContent = ''
+    TweenMax.fromTo("#stop3", 1.5, {
+        attr:{offset:-1}
+        }, {
+        attr:{offset:1},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
 
-			//synth playback
-			const synths = []
-			document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-				const playing = e.detail
-				if (playing) {
-					const now = Tone.now() 
-					midi.tracks.forEach(track => {
-						//create a synth for each track
-						guitar1 = new Tone.FMSynth({envelope: {
-								attack: 0.01,
-								decay: 0.1,
-								sustain: 0.3,
-								release: 1
-                            }
-						}).toMaster();
-						synths.push(guitar1)
-						//schedule all of the events
-						//repeated event every 8th note
-                       
-                        Tone.Transport.scheduleRepeat(track.notes.forEach(note => {
-							guitar1.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+    TweenMax.fromTo("#stop4", 1.5, {
+        attr:{offset:0}
+        }, {
+        attr:{offset:2},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+    TweenMax.fromTo("#stop5", 1.5, {
+        attr:{offset:-1}
+        }, {
+        attr:{offset:1},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
 
-                        // transport must be started before it starts invoking events
-                        Tone.Transport.bpm.value = 192;   
-                        Tone.Transport.start("+0.1");
-					})
-				} else {
-					//dispose the synth and make a new one
-					while (synths.length) {
-						const guitar1 = synths.shift()
-						guitar1.dispose()
-					}
-				}
-			})
-		})
+    TweenMax.fromTo("#stop6", 1.5, {
+        attr:{offset:0}
+        }, {
+        attr:{offset:2},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+    TweenMax.fromTo("#stop7", 1.5, {
+        attr:{offset:-1}
+        }, {
+        attr:{offset:1},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+
+    TweenMax.fromTo("#stop8", 1.5, {
+        attr:{offset:0}
+        }, {
+        attr:{offset:2},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+    TweenMax.fromTo("#stop9", 1.5, {
+        attr:{offset:-1}
+        }, {
+        attr:{offset:1},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+
+    TweenMax.fromTo("#stop10", 1.5, {
+        attr:{offset:0}
+        }, {
+        attr:{offset:2},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+    TweenMax.fromTo("#stop11", 1.5, {
+        attr:{offset:-1}
+        }, {
+        attr:{offset:1},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
+
+    TweenMax.fromTo("#stop12", 1.5, {
+        attr:{offset:0}
+        }, {
+        attr:{offset:2},
+        repeat: -1,
+        yoyo: true,
+        ease:Linear.easeNone});
     */
     </script>
 

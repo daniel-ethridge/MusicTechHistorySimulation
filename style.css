@@ -327,3 +327,51 @@ border-radius: 25px
     cursor:pointer;
     border-radius: 25px
     }
+
+#track1 {
+    position: absolute;
+    top: 207px;
+    left: 15%;
+    margin-left: -250px;
+    display: none;
+    }
+
+#track2 {
+    position: absolute;
+    top: 307px;
+    left: 15%;
+    margin-left: -250px;
+    display: none
+    }
+
+#track3 {
+    position: absolute;
+    top: 407px;
+    left: 15%;
+    margin-left: -250px;
+    display: none;
+    }
+
+#track4 {
+    position: absolute;
+    top: 507px;
+    left: 15%;
+    margin-left: -250px;
+    display: none;
+    }
+
+#track5 {
+    position: absolute;
+    top: 607px;
+    left: 15%;
+    margin-left: -250px;
+    display: none;
+    }
+
+#track6 {
+    position: absolute;
+    top: 707px;
+    left: 15%;
+    margin-left: -250px;
+    display: none;
+    }

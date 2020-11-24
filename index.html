@@ -17,51 +17,16 @@
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.68/Tone.js"></script>
-    <script>
-        Tone.start();
-        var synth;
-        var player;
-        document.addEventListener("DOMContentLoaded", function () {
-            //create a synth and connect it to the main output (your speakers)
-            synth = new Tone.Synth().toDestination();
-        });
 
-        function PlayTone() {
-            //play a middle 'C' for the duration of an 8th note
-            synth.triggerAttack("C3");
-        }
-
-        function StopTone() {
-            synth.triggerRelease();
-        }
-        
-
-    </script>
 
 </head>
 <body>
-    <!--
-    <button id="soloPlay" class="button button1" onclick="PlayTone()"> Play </button>
-    <button id="soloStop" class="button button2" onclick="StopTone()"> Stop </button>
-
-    <button id="gtr1Play" class="button button1" onclick="PlayTone()"> Play </button>
-    <button id="gtr1Stop" class="button button2" onclick="StopTone()"> Stop </button>
-        -->
 
     <script type="text/javascript" src="https://www.guitarland.com/javascripts/Tone.js"></script>
     <script type="text/javascript" src="https://www.guitarland.com/javascripts/StartAudioContext.js"></script>
     <script src="https://www.guitarland.com/javascripts/Rhythm.js"></script>
     <script src="https://www.guitarland.com/javascripts/instruments.js"></script>
-    <!--
-    <tone-content>
-
-        <div id="Description">Load and play Bach's <i>Prelude in C</i></div>
-        <div id="Status">Loading...</div>
-        <tone-play-toggle disabled>Loading...</tone-play-toggle>
-    </tone-content>
-
-    <button id="gtr1Stop" class="button button2" onclick="PlayMidi()"> Stop </button>
--->
+    
 <svg width="100%" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="track1">
     <defs>
       <linearGradient id="Gradient">
@@ -376,83 +341,7 @@
         repeat: -1,
         yoyo: true,
         ease:Linear.easeNone});
-    /*
-    TweenMax.fromTo("#stop3", 1.5, {
-        attr:{offset:-1}
-        }, {
-        attr:{offset:1},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-
-    TweenMax.fromTo("#stop4", 1.5, {
-        attr:{offset:0}
-        }, {
-        attr:{offset:2},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-    TweenMax.fromTo("#stop5", 1.5, {
-        attr:{offset:-1}
-        }, {
-        attr:{offset:1},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-
-    TweenMax.fromTo("#stop6", 1.5, {
-        attr:{offset:0}
-        }, {
-        attr:{offset:2},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-    TweenMax.fromTo("#stop7", 1.5, {
-        attr:{offset:-1}
-        }, {
-        attr:{offset:1},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-
-    TweenMax.fromTo("#stop8", 1.5, {
-        attr:{offset:0}
-        }, {
-        attr:{offset:2},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-    TweenMax.fromTo("#stop9", 1.5, {
-        attr:{offset:-1}
-        }, {
-        attr:{offset:1},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-
-    TweenMax.fromTo("#stop10", 1.5, {
-        attr:{offset:0}
-        }, {
-        attr:{offset:2},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-    TweenMax.fromTo("#stop11", 1.5, {
-        attr:{offset:-1}
-        }, {
-        attr:{offset:1},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-
-    TweenMax.fromTo("#stop12", 1.5, {
-        attr:{offset:0}
-        }, {
-        attr:{offset:2},
-        repeat: -1,
-        yoyo: true,
-        ease:Linear.easeNone});
-    */
+    
     </script>
 
 
